@@ -1,0 +1,14 @@
+services:
+  - name: flask-backend
+    type: web
+    env: python
+    buildCommand: "pip install -r requirments.txt"
+    startCommand: "gunicorn wsgi:app"
+    plan: free
+
+  - name: react-frontend
+    type: web
+    env: static
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "frontend/build"
+    plan: free
